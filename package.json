@@ -1,0 +1,14 @@
+{
+  "name": "node-crud-application",
+  "version": "1.0.0",
+  "description": "Simple Knowledgebase app",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "author": "Akansha singh",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
