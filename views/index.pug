@@ -6,3 +6,5 @@ block content
     each article, i in articles
       li.list-group-item
         a(href="/article/"+article._id)= article.title
+  br
+  a.btn.btn-primary(href='/articles/add') Add Article

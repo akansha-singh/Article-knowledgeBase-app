@@ -30,10 +30,10 @@ app.set('view engine', 'pug');
 
 // Body Parser Middleware
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 // Set Public Folder
 app.use(express.static(path.join(__dirname, 'public')));
@@ -46,7 +46,7 @@ Article.find({}, function(err,articles){
         console.log(err);
     } else {
         res.render('index',{
-        title: 'Articles',
+        title:'Articles',
         articles: articles
     });
     }
@@ -83,6 +83,17 @@ app.post('/articles/add/', function(req,res){
         } else {
             res.redirect('/');
         }
+    });
+});
+
+
+// Load Edit Form
+app.get('/article/edit/:id',function(req,res){
+    Article.findById(req.params.id, function(err, article){
+        res.render('edit_article', {
+            title:'Edit Article',
+            article:article
+        });
     });
 });
 
