@@ -103,7 +103,7 @@ app.post('/articles/edit/:id', function(req,res){
     article.title = req.body.title;
     article.author = req.body.author;
     article.body = req.body.body;
-    
+
     let query = {_id:req.params.id}
 
     Article.update(query, article, function(err){
@@ -113,6 +113,18 @@ app.post('/articles/edit/:id', function(req,res){
         } else {
             res.redirect('/');
         }
+    });
+});
+
+// Delete Article
+app.delete('/article/:id', function(req, res){
+    let query = {_id:req.params.id}
+
+    Article.remove(query, function(err){
+        if(err){
+            console.log(err);
+        }
+        res.send('Success');
     });
 });
 
