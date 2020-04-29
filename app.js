@@ -35,6 +35,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
+// Set Public Folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 // Home Route
