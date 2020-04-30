@@ -32,6 +32,7 @@ let Article = require('./models/article');
 app.set('views',path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+
 // Body Parser Middleware
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -89,97 +90,10 @@ Article.find({}, function(err,articles){
 });
 });
 
-// Get Single Article
-app.get('/article/:id',(req,res) => {
-    Article.findById(req.params.id, function(err, article){
-        res.render('article', {
-            article:article
-        });
-    });
-});
+// Route Files
+let articles = require('./routes/articles');
+app.use('/articles', articles);
 
-// Add Route
-app.get('/articles/add',function(req,res){
-    res.render('add_article', {
-        title: 'Add Article'
-});
-});
-
-
-// Add Submit POST Route
-app.post('/articles/add', function(req,res){
-    req.checkBody('title','Title is required').notEmpty();
-    req.checkBody('author','Author is required').notEmpty();
-    req.checkBody('title','Body is required').notEmpty();
-
-// Get Errors
-let errors = req.validationErrors();
-
-if(errors){
-    res.render('add_article', {
-        title: 'Add Article',
-        errors:errors
-    });
-} else {
-    let article = new Article();
-    article.title = req.body.title;
-    article.author = req.body.author;
-    article.body = req.body.body;
-
-    article.save((err) => {
-        if(err){
-            console.log(err);
-            return;
-        } else {
-            req.flash('success','Article Added');
-            res.redirect('/');
-        }
-    });
-  }   
-});
-
-
-// Load Edit Form
-app.get('/article/edit/:id',function(req,res){
-    Article.findById(req.params.id, function(err, article){
-        res.render('edit_article', {
-            title:'Edit Article',
-            article:article
-        });
-    });
-});
-
-// Update Submit POST Route
-app.post('/articles/edit/:id', function(req,res){
-    let article = {};
-    article.title = req.body.title;
-    article.author = req.body.author;
-    article.body = req.body.body;
-
-    let query = {_id:req.params.id}
-
-    Article.update(query, article, function(err){
-        if(err){
-            console.log(err);
-            return;
-        } else {
-            req.flash('success', 'Article Updated');
-            res.redirect('/');
-        }
-    });
-});
-
-// Delete Article
-app.delete('/article/:id', function(req, res){
-    let query = {_id:req.params.id}
-
-    Article.remove(query, function(err){
-        if(err){
-            console.log(err);
-        }
-        res.send('Success');
-    });
-});
 
 // Start Server
 app.listen(3000, function(){
