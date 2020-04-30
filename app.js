@@ -148,6 +148,7 @@ app.post('/articles/edit/:id', function(req,res){
             console.log(err);
             return;
         } else {
+            req.flash('success', 'Article Updated');
             res.redirect('/');
         }
     });
