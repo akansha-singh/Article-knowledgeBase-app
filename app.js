@@ -10,7 +10,7 @@ const config = require('./config/database');
 
 
 // Connect to database
-mongoose.connect(config.database);
+mongoose.connect('mongodb://localhost:27017/nodekb');
 let db = mongoose.connection;
 
 // Check connection

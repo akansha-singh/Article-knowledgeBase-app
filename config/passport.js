@@ -12,7 +12,7 @@ passport.use(new LocalStrategy(
       User.findOne(query, function (err, user) {
         if(err) throw err; 
         if (!user) {
-          return done(null, false, { message: 'Incorrect username.' });
+          return done(null, false, { message: 'No User Found' });
         }
 
         // Match Password
