@@ -2,10 +2,29 @@
     color: #a94442;
     background-color: #f2dede;
     border-color: #ebccd1;
-  }
+}
   
-  .alert-success_msg{
+.alert-success_msg{
     color: #3c763d;
     background-color: #dff0d8;
     border-color: #d6e9c6;
-  }
+}
+
+.list-custom{
+  background-color: #f8f6f6;
+  margin:2px;
+  border-left-color:rgb(212, 63, 145);
+  border-width: 0px;
+  border-left-width: 5px;
+}
+
+.new-article{
+  background-color:#f8f6f6;
+  border-radius: 10px;
+  margin:20px;
+  padding:20px;
+  
+}
+input{
+  border-radius: 10px;
+}

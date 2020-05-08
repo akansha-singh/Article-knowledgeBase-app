@@ -1,13 +1,31 @@
 extends layout
 
 block content
-    h1 Login
-    form(method='POST', action='/users/login')
-        #form-group
-            label Username:
-            input.form-control(name='username', type='text')
-        #form-group
-            label Password:
-            input.form-control(name='password', type='password')
-        br
-        input.btn.btn-primary(type='submit',value='Submit')
+    h2(style="text-align:center") Login
+    br
+    div.container
+        div.row
+            div.col-lg-4
+            div.col-lg-4
+                form(method='POST', action='/users/login')
+                    #form-group
+                        label Username:
+                        input.form-control(name='username', type='text', placeholder="Enter your username")
+                    br
+                    #form-group
+                        label Password:
+                        input.form-control(name='password', type='password', placeholder="Enter your password")
+                    br
+                    input.btn.btn-primary(type='submit',value='Log In')
+            div.col-lg-4
+    br
+    br
+    br
+    br
+    br
+    br
+    br
+
+
+
+    

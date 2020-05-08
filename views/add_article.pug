@@ -1,13 +1,24 @@
 extends layout
 
 block content
-    h1 #{title}
-    form(method='POST', action='/articles/add')
-        #form-group
-            label Title:
-            input.form-control(name='title', type='text')
-        #form-group
-            label Body:
-            textarea.form-control(name='body')
-        br
-        input.btn.btn-primary(type='submit',value='Submit')
+    h2(style="text-align:center") #{title}
+    div.container
+        div.row
+            div.col-lg-1
+            div.col-lg-9.new-article
+                form(method='POST', action='/articles/add')
+                    #form-group
+                        label Title:
+                        input.form-control(name='title', type='text')
+                    br
+                    #form-group
+                        label Article:
+                        textarea.form-control(name='body', placeholder="tell your story..")
+                    br
+                    input.btn.btn-primary(type='submit',value='Post')
+            div.col-lg-2
+    br
+    br
+    br
+    br
+    

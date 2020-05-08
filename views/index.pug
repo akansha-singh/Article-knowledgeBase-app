@@ -1,8 +1,9 @@
 extends layout
 
 block content
-  h1 #{title}
-  ul.list-group
-    each article, i in articles
-      li.list-group-item
-        a(href="/articles/"+article._id)= article.title
+  div.container
+    h2(style="text-align:center") #{title}
+    ul.list-group
+      each article, i in articles
+        li.list-group-item.list-custom
+          a(href="/articles/"+article._id)= article.title
